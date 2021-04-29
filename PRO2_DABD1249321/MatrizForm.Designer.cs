@@ -53,9 +53,11 @@
                 {
                     this.PB0_0 = new System.Windows.Forms.PictureBox();
                     this.Controls.Add(this.PB0_0);
-                    ((System.ComponentModel.ISupportInitialize)(this.PB0_0)).BeginInit();
-                    this.PB0_0.BackColor = DataCSV[o,x]=="P"?System.Drawing.SystemColors.ControlDark: System.Drawing.SystemColors.ControlLight;
-                    //this.PB0_0.Image = ;
+                    string stanteria = DataCSV[o, x];
+                    if(stanteria == "P") this.PB0_0.BackColor = System.Drawing.SystemColors.ControlDark;
+                    if(stanteria == "C") this.PB0_0.BackColor = System.Drawing.Color.SkyBlue;
+                    if(stanteria == "F") this.PB0_0.BackColor = System.Drawing.Color.Red;
+                    if(stanteria == "N") this.PB0_0.BackColor = System.Drawing.Color.RosyBrown;
                     this.PB0_0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                     this.PB0_0.Enabled = false;
                     this.PB0_0.Location = new System.Drawing.Point(x*89, o*89);
@@ -66,8 +68,26 @@
                     this.PB0_0.TabStop = false;
                 }
             }
+            this.BT0_1 = new System.Windows.Forms.Button();
+            this.Controls.Add(this.BT0_1);
+            this.BT0_1.Location = new System.Drawing.Point(200, 400);
+            this.BT0_1.Text = "Entrada";
+            this.BT0_1.Name = "Boton_1";
+            this.BT0_1.Size = new System.Drawing.Size(89, 50);
+            this.BT0_1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BT0_1.Click += new System.EventHandler(this.BT0_1_Click);
+
+            this.BT0_2 = new System.Windows.Forms.Button();
+            this.Controls.Add(this.BT0_2);
+            this.BT0_2.Location = new System.Drawing.Point(350, 400);
+            this.BT0_2.Text = "Salida";
+            this.BT0_2.Name = "Boton_1";
+            this.BT0_2.Size = new System.Drawing.Size(89, 50);
+            this.BT0_2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
         }
         private System.Windows.Forms.PictureBox PB0_0;
+        private System.Windows.Forms.Button BT0_1;
+        private System.Windows.Forms.Button BT0_2;
         #endregion
     }
 }

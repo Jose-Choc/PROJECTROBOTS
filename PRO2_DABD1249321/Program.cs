@@ -24,10 +24,10 @@ namespace PRO2_DABD1249321
         private static void checkfile()
         {
             string[,] MatrizParaLeer;
-            string pathfile = @"C:\Users\CRGG\Desktop\Proyecto Web\Curso\PRO2_DABD1249321\PRO2_DABD1249321\Data\ProyectoB.csv";
+            string pathfile = @"C:\Users\CRGG\source\repos\Jose-Choc\PROJECTROBOTS\PRO2_DABD1249321\Data\ProyectoB.csv";
             if (File.Exists(pathfile))
             {  
-                var reader = new StreamReader(File.OpenRead(@"C:\Users\CRGG\Desktop\Proyecto Web\Curso\PRO2_DABD1249321\PRO2_DABD1249321\Data\ProyectoB.csv"));
+                var reader = new StreamReader(File.OpenRead(pathfile));
                 List<string> lista = new List<string>();
                 try
                 {

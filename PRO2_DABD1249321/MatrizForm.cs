@@ -16,5 +16,10 @@ namespace PRO2_DABD1249321
             
             InitializeComponent(MatrizParaLeer);
         }
+        public void BT0_1_Click(object sender, EventArgs e)
+        {
+            VentanaDeEntrada EntradaCSV = new VentanaDeEntrada();
+            EntradaCSV.Show();
+        }
     }
 }

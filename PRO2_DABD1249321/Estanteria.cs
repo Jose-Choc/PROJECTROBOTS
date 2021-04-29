@@ -4,8 +4,9 @@ using System.Text;
 
 namespace PRO2_DABD1249321
 {
-    class Motricidad
+    class Estanteria
     {
+        private int stock { get; set; }
 
     }
 }

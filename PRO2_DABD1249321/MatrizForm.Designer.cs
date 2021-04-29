@@ -2,7 +2,6 @@
 {
     partial class MatrizForm
     {
-        string[,] DataCSV;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -29,7 +28,22 @@
         /// </summary>
         private void InitializeComponent(string[,] MatrizParaLeer)
         {
-            this.DataCSV = MatrizParaLeer;
+            string[,] DataCSV = MatrizParaLeer;
+            //bool actividad = false;
+            int entrada_f=0; int entrada_c=0;
+            int n_fila = DataCSV.GetLength(0);int n_columna = DataCSV.GetLength(1);
+            for (int o = 0; o < n_fila; o++)
+            {
+                for (int x = 0; x < n_columna; x++)
+                {
+                    if (DataCSV[o, x] == "O")
+                    {
+                        
+                        entrada_f = o;
+                        entrada_c = x;
+                    }
+                }
+            }
 
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatrizForm));
@@ -45,19 +59,26 @@
             this.Text = "Diseño de bodega";
             this.ResumeLayout(false);
 
-            int n_fila = DataCSV.GetLength(0);
-            int n_columna = DataCSV.GetLength(1);
+
+            this.ROBOT_1 = new System.Windows.Forms.PictureBox();
+            this.Controls.Add(this.ROBOT_1);
+            this.ROBOT_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ROBOT_1.Location = new System.Drawing.Point(entrada_c*89+15, entrada_f*89+15);
+            this.ROBOT_1.BackColor = System.Drawing.Color.Yellow;
+            this.ROBOT_1.Size = new System.Drawing.Size(50, 50);
+
+
             for (int o = 0; o < n_fila; o++)
             {
                 for (int x = 0; x < n_columna; x++)
                 {
                     this.PB0_0 = new System.Windows.Forms.PictureBox();
                     this.Controls.Add(this.PB0_0);
-                    string stanteria = DataCSV[o, x];
-                    if(stanteria == "P") this.PB0_0.BackColor = System.Drawing.SystemColors.ControlDark;
-                    if(stanteria == "C") this.PB0_0.BackColor = System.Drawing.Color.SkyBlue;
-                    if(stanteria == "F") this.PB0_0.BackColor = System.Drawing.Color.Red;
-                    if(stanteria == "N") this.PB0_0.BackColor = System.Drawing.Color.RosyBrown;
+                    if (DataCSV[o, x] == "P") this.PB0_0.BackColor = System.Drawing.SystemColors.ControlDark;
+                    if (DataCSV[o, x] == "C") this.PB0_0.BackColor = System.Drawing.Color.SkyBlue;
+                    if (DataCSV[o, x] == "F") this.PB0_0.BackColor = System.Drawing.Color.Red;
+                    if (DataCSV[o, x] == "N") this.PB0_0.BackColor = System.Drawing.Color.RosyBrown;
+                    if (DataCSV[o, x] == "O") this.PB0_0.BackColor = System.Drawing.Color.IndianRed;
                     this.PB0_0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                     this.PB0_0.Enabled = false;
                     this.PB0_0.Location = new System.Drawing.Point(x*89, o*89);
@@ -84,7 +105,9 @@
             this.BT0_2.Name = "Boton_1";
             this.BT0_2.Size = new System.Drawing.Size(89, 50);
             this.BT0_2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+
         }
+        private System.Windows.Forms.PictureBox ROBOT_1;
         private System.Windows.Forms.PictureBox PB0_0;
         private System.Windows.Forms.Button BT0_1;
         private System.Windows.Forms.Button BT0_2;

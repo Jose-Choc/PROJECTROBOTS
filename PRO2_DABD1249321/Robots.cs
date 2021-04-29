@@ -4,8 +4,10 @@ using System.Text;
 
 namespace PRO2_DABD1249321
 {
-    class Motricidad
+    class Robots
     {
+        private int velocidad { get; set; }
+        private int capacidad { get; set; }
 
     }
 }

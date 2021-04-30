@@ -19,12 +19,11 @@ namespace PRO2_DABD1249321
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             checkfile();
-            //Application.Run(new DataForm());
         }
         private static void checkfile()
         {
             string[,] MatrizParaLeer;
-            string pathfile = @"C:\Users\CRGG\source\repos\Jose-Choc\PROJECTROBOTS\PRO2_DABD1249321\Data\ProyectoB.csv";
+            string pathfile = @"C:\Users\CRGG\Desktop\Proyecto Web\Curso\PROJECTROBOTS\PRO2_DABD1249321\Data\ProyectoB.csv";
             if (File.Exists(pathfile))
             {  
                 var reader = new StreamReader(File.OpenRead(pathfile));

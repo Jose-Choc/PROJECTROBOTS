@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,54 +11,55 @@ namespace PRO2_DABD1249321
 {
     public partial class MatrizForm : Form
     {
+        ChekFile MatrizData = new ChekFile();
         int almacen_fila; int almacen_columna; string almacen; string robot; int capacidad;
         string[,] DataCSV;
+        Motricidad motriz = new Motricidad();
+        Timer tiempo = new Timer();
         
-        public MatrizForm(string[,] MatrizParaLeer)
+        public MatrizForm()
         {
-            this.DataCSV = MatrizParaLeer;
-            InitializeComponent(MatrizParaLeer);
+            DataCSV = MatrizData.MatrizParaMostrar();
+            InitializeComponent(DataCSV);
         }
         public void BT0_1_Click(object sender, EventArgs e)
         {
-            MoveRobot();
-            //VentanaDeEntrada EntradaCSV = new VentanaDeEntrada();
-            //EntradaCSV.Show();
-        }
-        public void MoveRobot()
-        {
-            int fila = 2; int columna = 1; int xpos = 0; int ypos = 0;
-            int n_fila = DataCSV.GetLength(0); int n_columna = DataCSV.GetLength(1);
-            for (int o = 0; o < n_fila; o++)
+            VentanaManual manual = new VentanaManual();
+            manual.ShowDialog();
+            try
             {
-                for (int x = 0; x < n_columna; x++)
+                almacen = manual.tipo_material.Text;
+                almacen_fila = Int32.Parse(manual.n_fila.Text);
+                almacen_columna = Int32.Parse(manual.n_columna.Text);
+                robot = manual.tipo_robot.Text;
+                capacidad = Int32.Parse(manual.cantidad.Text);
+                int[,] distinicial = motriz.distanciaxy(almacen_fila, almacen_columna);
+                if (distinicial.GetLength(0) < 0 && distinicial.GetLength(1)> 0)
                 {
-                    if (DataCSV[o, x] == "O") {
-                        xpos = x;   
-                        ypos = o; 
-                    }
+                    int x = motriz.entrada().GetLength(0);
+                    int y = motriz.entrada().GetLength(1);
+                    if (motriz.buscarespacio(x - 1, y, "P")) Moveleft(x - 1, x, y, 1000);
+                    if (motriz.buscarespacio(x, y + 1, "P")) MoveUp(y - 1, x, y, 1000);
                 }
-            }
-            int distancia_x = fila - xpos; int distancia_y = columna-ypos;
-            this.ROBOT_1.Location = new Point(xpos * 89 +15, ypos * 89+15);
-            if(distancia_x > distancia_y)
-            {
-                Moveleft(columna * 89 + 15, xpos, ypos);
-                MoveDown(fila * 89 + 15, xpos, ypos);
-            }
-            if(distancia_y > distancia_x)
-            {
-                Moveleft(columna * 89 + 15, xpos, ypos);
-                MoveDown(fila * 89  + 15, xpos, ypos);
-            }
+                //ROBOT_1.Location = new Point(motriz.entrada().GetLength(0) * 89 + 15, motriz.entrada().GetLength(1) * 89 + 15);
 
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.ToString());
+            }
         }
-        private void Moveleft(int x, int xpos, int ypos)
+        public void BT0_2_Click(object send, EventArgs e)
         {
-            for (int i = xpos * 89 + 15; i > x+89; i--)
+            Close();
+        }
+        private void Moveleft(int x, int xpos, int ypos, int duracion)
+        {
+            for (int i = xpos * 89 + 15; i > x + 89; i--)
             {
                 this.ROBOT_1.Location = new Point(i, ypos * 89 + 15);
-                Thread.Sleep(20);
+                tiempo.Interval = duracion;
+                tiempo.Start();
             }
         }
         private void MoveRight(int x)
@@ -67,25 +67,21 @@ namespace PRO2_DABD1249321
             for (int i = 0; i < x; i++)
             {
                 this.ROBOT_1.Location = new Point(i + 15, 15);
-                Thread.Sleep(20);
             }
         }
         private void MoveDown(int y, int xpos, int ypos)
         {
             for (int i = ypos; i < y; i++)
             {
-                this.ROBOT_1.Location = new Point(xpos+15+89, i+15);
-                Thread.Sleep(20);
+                this.ROBOT_1.Location = new Point(xpos + 15 + 89, i + 15);
             }
         }
-        private void MoveUp(int y)
+        private void MoveUp(int y, int ypos, int xpos, int duracion)
         {
-            for (int i = y; i > 0; i--)
+            for (int i = ypos*89+15; i > y-89 ; i--)
             {
-                this.ROBOT_1.Location = new Point(15, i+15);
-                Thread.Sleep(20);
+                this.ROBOT_1.Location = new Point(i, xpos*89 + 15);
             }
         }
-        
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace PRO2_DABD1249321
 {
-    partial class VentanaDeEntrada
+    partial class VentanaManual
     {
         /// <summary>
         /// Required designer variable.
@@ -196,7 +196,7 @@ namespace PRO2_DABD1249321
             this.n_columna.Size = new System.Drawing.Size(100, 23);
             this.n_columna.TabIndex = 16;
             // 
-            // VentanaDeEntrada
+            // VentanaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -217,8 +217,8 @@ namespace PRO2_DABD1249321
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tipo_robot);
             this.Controls.Add(this.label1);
-            this.Name = "VentanaDeEntrada";
-            this.Text = "VentanaDeEntrada";
+            this.Name = "VentanaManual";
+            this.Text = "VentanaManual";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,19 +227,19 @@ namespace PRO2_DABD1249321
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox tipo_robot;
+        public System.Windows.Forms.ComboBox tipo_robot;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox tipo_material;
+        public System.Windows.Forms.ComboBox tipo_material;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox cantidad;
-        private System.Windows.Forms.ComboBox accion;
+        public System.Windows.Forms.TextBox cantidad;
+        public System.Windows.Forms.ComboBox accion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox n_fila;
-        private System.Windows.Forms.TextBox n_columna;
+        public System.Windows.Forms.TextBox n_fila;
+        public System.Windows.Forms.TextBox n_columna;
     }
 }

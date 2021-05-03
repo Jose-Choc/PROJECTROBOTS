@@ -1,4 +1,6 @@
-﻿namespace PRO2_DABD1249321
+﻿using System.Threading.Tasks;
+
+namespace PRO2_DABD1249321
 {
     partial class MatrizForm
     {
@@ -28,9 +30,11 @@
         /// </summary>
         private void InitializeComponent(string[,] MatrizParaLeer)
         {
+            
+            //string[,] DataCSV = DataMatriz(MatrizParaLeer);
+            int n_fila = MatrizParaLeer.GetLength(0); int n_columna = MatrizParaLeer.GetLength(1);
             string[,] DataCSV = MatrizParaLeer;
-            int n_fila = DataCSV.GetLength(0); int n_columna = DataCSV.GetLength(1);
-
+                
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatrizForm));
 
@@ -40,7 +44,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Name = "MatrizForm";
             this.Text = "Diseño de bodega";
             this.ResumeLayout(false);
@@ -77,8 +81,8 @@
             }
             this.BT0_1 = new System.Windows.Forms.Button();
             this.Controls.Add(this.BT0_1);
-            this.BT0_1.Location = new System.Drawing.Point(200, 400);
-            this.BT0_1.Text = "Entrada";
+            this.BT0_1.Location = new System.Drawing.Point(200, 500);
+            this.BT0_1.Text = "Manual";
             this.BT0_1.Name = "Boton_1";
             this.BT0_1.Size = new System.Drawing.Size(89, 50);
             this.BT0_1.BackColor = System.Drawing.Color.LemonChiffon;
@@ -86,13 +90,15 @@
 
             this.BT0_2 = new System.Windows.Forms.Button();
             this.Controls.Add(this.BT0_2);
-            this.BT0_2.Location = new System.Drawing.Point(350, 400);
-            this.BT0_2.Text = "Salida";
+            this.BT0_2.Location = new System.Drawing.Point(350, 500);
+            this.BT0_2.Text = "Automatico";
             this.BT0_2.Name = "Boton_1";
             this.BT0_2.Size = new System.Drawing.Size(89, 50);
             this.BT0_2.BackColor = System.Drawing.Color.AliceBlue;
+            this.BT0_2.Click += new System.EventHandler(this.BT0_2_Click);
 
         }
+        
         private System.Windows.Forms.PictureBox ROBOT_1;
         private System.Windows.Forms.PictureBox PB0_0;
         private System.Windows.Forms.Button BT0_1;

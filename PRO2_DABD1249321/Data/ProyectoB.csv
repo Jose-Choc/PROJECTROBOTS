@@ -1,4 +1,5 @@
-C,P,P,P,P,P,O
-C,P,C,C,P,N,P
-F,P,C,C,P,N,P
-N,P,P,P,P,P,P
+C10,P,F15,P,N%
+O,R++,P,R++,P
+F100,P,F5,P,N7
+P,P,P,R+-,O
+F10,P,F44,P,N50
